@@ -1,7 +1,56 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import MovieList from "./components/movie/MovieList";
+import { useDispatch } from "react-redux";
+import { RootState } from "./redux-toolkit/store";
+import { api_key, movie_db_url } from "./config";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { nowPlayingUpdateState } from "./redux-toolkit/nowPlayingSlice";
+import { topTrendingUpdateState } from "./redux-toolkit/topTrendingSlice";
+import { upComingUpdateState } from "./redux-toolkit/upComingSlice";
 
 function App() {
+  const nowPlayingList = useSelector(
+    (state: RootState) => state.nowPlaying.moviesList
+  );
+  const topTrendingList = useSelector(
+    (state: RootState) => state.topTrending.moviesList
+  );
+  const upComingList = useSelector(
+    (state: RootState) => state.upComing.moviesList
+  );
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const fetchNowPlaying = async () => {
+      try {
+        // Fetch now playing
+        const nowPlaying = await axios.get(
+          `${movie_db_url}popular?api_key=${api_key}&page=1`
+        );
+        const nowPlayingList: any[] = nowPlaying.data.results;
+        dispatch(nowPlayingUpdateState(nowPlayingList));
+
+        // Fetch top trending
+        const topTrending = await axios.get(
+          `${movie_db_url}/top_rated?api_key=${api_key}&page=1`
+        );
+        const topTrendingList: any[] = topTrending.data.results;
+        dispatch(topTrendingUpdateState(topTrendingList));
+
+        // Fetch up coming
+        const upComing = await axios.get(
+          `${movie_db_url}/top_rated?api_key=${api_key}&page=1`
+        );
+        const upComingList: any[] = upComing.data.results;
+        dispatch(upComingUpdateState(upComingList));
+      } catch (error: any) {
+        console.log(error);
+      }
+    };
+    fetchNowPlaying();
+  }, [dispatch]);
+
   return (
     <Fragment>
       <header className="header flex">
@@ -42,9 +91,16 @@ function App() {
               </div>
             </div>
           </section>
-          <MovieList></MovieList>
-          <MovieList></MovieList>
-          <MovieList></MovieList>
+          {}
+          <MovieList
+            moviesList={nowPlayingList}
+            header="Now playing"
+          ></MovieList>
+          <MovieList
+            moviesList={topTrendingList}
+            header="Top trending"
+          ></MovieList>
+          <MovieList moviesList={upComingList} header="Up coming"></MovieList>
 
           {/* right menus */}
         </div>
