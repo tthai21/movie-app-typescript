@@ -1,16 +1,24 @@
 import React from "react";
 import MovieCard from "./MovieCard";
+import { NavLink } from "react-router-dom";
 
-const MovieList: React.FC<{ moviesList: any[]; header: string }> = (props) => {
-  const moviesList = props;
-  const list = moviesList.moviesList?.slice(-4);
+const MovieList: React.FC<{
+  moviesList: any[];
+  header: string;
+  path: string;
+}> = (props) => {
+  const moviesList = props.moviesList;
+  // const list = moviesList.moviesList?.slice(-4);
   return (
     <section className="pb-20 movies-layout">
-      <h2 className="mb-5 text-2xl font-bold text-white page-container">
+      <NavLink
+        to={`/${props.path}`}
+        className="mb-5 text-2xl font-bold text-white page-container"
+      >
         {props.header}
-      </h2>
+      </NavLink>
       <div className="grid grid-cols-4 gap-10 mb-3 text-white movie-list page-container">
-        {list?.map((item) => (
+        {moviesList?.map((item) => (
           <MovieCard
             url={item.backdrop_path}
             title={item.original_title}
