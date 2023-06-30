@@ -5,9 +5,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux-toolkit/store";
 import FetchMoviesData from "../redux-toolkit/FetchMoviesData";
 
-const NowPlayingPage = () => {
-  const nowPlayingList: any[] = useSelector(
-    (state: RootState) => state.nowPlaying.moviesList
+const UpComingPage: React.FC = () => {
+  const upComingList: any[] = useSelector(
+    (state: RootState) => state.upComing.moviesList
   );
 
   FetchMoviesData();
@@ -17,12 +17,12 @@ const NowPlayingPage = () => {
         <MovieBanner />
       </div>
       <MovieList
-        moviesList={nowPlayingList}
-        header="Now playing"
-        path="now-playing"
+        moviesList={upComingList}
+        header="Up Coming"
+        path="up-coming"
       ></MovieList>
     </Fragment>
   );
 };
 
-export default NowPlayingPage;
+export default UpComingPage;

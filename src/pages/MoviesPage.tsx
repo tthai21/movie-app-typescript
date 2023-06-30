@@ -5,20 +5,21 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux-toolkit/store";
 import FetchMoviesData from "../redux-toolkit/FetchMoviesData";
 
-const HomePage: React.FC = () => {
+const MoviesPage: React.FC = () => {
   const nowPlayingList: any[] = useSelector(
     (state: RootState) => state.nowPlaying.moviesList
   );
-
   const nowPlayingListHome = nowPlayingList?.slice(-4);
-  console.log(nowPlayingListHome);
 
   const topTrendingList: any[] = useSelector(
     (state: RootState) => state.topTrending.moviesList
   );
+  const topTrendingListHome = topTrendingList?.slice(-4);
   const upComingList: any[] = useSelector(
     (state: RootState) => state.upComing.moviesList
   );
+  const upComingListHome = upComingList?.slice(-4);
+
   FetchMoviesData();
   return (
     <Fragment>
@@ -31,17 +32,17 @@ const HomePage: React.FC = () => {
         path="now-playing"
       ></MovieList>
       <MovieList
-        moviesList={topTrendingList}
+        moviesList={topTrendingListHome}
         header="Top trending"
-        path="now-playing"
+        path="top-trending"
       ></MovieList>
       <MovieList
-        moviesList={upComingList}
+        moviesList={upComingListHome}
         header="Up coming"
-        path="now-playing"
+        path="up-coming"
       ></MovieList>
     </Fragment>
   );
 };
 
-export default HomePage;
+export default MoviesPage;

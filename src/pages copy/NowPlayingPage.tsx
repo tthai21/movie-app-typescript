@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux-toolkit/store";
 import FetchMoviesData from "../redux-toolkit/FetchMoviesData";
 
-const NowPlayingPage = () => {
+const NowPlayingPage: React.FC = () => {
   const nowPlayingList: any[] = useSelector(
     (state: RootState) => state.nowPlaying.moviesList
   );
