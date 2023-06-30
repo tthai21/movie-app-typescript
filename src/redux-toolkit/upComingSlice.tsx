@@ -1,19 +1,19 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface upComingState {
-  moviesList: any;
+  moviesList: movieType[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: upComingState = {
-  moviesList: null,
+  moviesList: [],
   loading: false,
   error: null,
 };
 
 export const upComingSlice = createSlice({
-  name: "nowPlaying",
+  name: "upComing",
   initialState,
   reducers: {
     upComingUpdateState: (state, action: PayloadAction<any>) => {

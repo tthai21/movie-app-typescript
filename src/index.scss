@@ -4,10 +4,10 @@
 
 @layer base {
   body {
-    @apply bg-slate-800 font-body px-5;
+    @apply bg-slate-900 font-body px-5 bg-opacity-95;
   }
   .bg-user {
-    @apply bg-slate-900 font-body px-5;
+    @apply bg-slate-900 font-body px-5 bg-opacity-90;
   }
 }
 

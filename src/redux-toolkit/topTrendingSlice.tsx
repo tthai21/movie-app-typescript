@@ -1,13 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface topTrendingState {
-  moviesList: any;
+  moviesList: movieType[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: topTrendingState = {
-  moviesList: null,
+  moviesList: [],
   loading: false,
   error: null,
 };

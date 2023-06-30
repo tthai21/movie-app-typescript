@@ -14,6 +14,9 @@ const MoviesRenderPage: React.FC<{ moviesType: string }> = (props) => {
   const upComingList: any[] = useSelector(
     (state: RootState) => state.upComing.moviesList
   );
+  const tvEpisode: any[] = useSelector(
+    (state: RootState) => state.tvEpisode.moviesList
+  );
   FetchMoviesData();
   switch (moviesType) {
     case "now-playing":
@@ -46,7 +49,7 @@ const MoviesRenderPage: React.FC<{ moviesType: string }> = (props) => {
     case "tv-episode":
       return (
         <MoviesRender
-          moviesList={upComingList}
+          moviesList={tvEpisode}
           header="Tv Episode "
           path="tv-episode"
         ></MoviesRender>

@@ -50,6 +50,7 @@ const UserMenus: React.FC = () => {
         <h6 className="text-xs text-gray-500">MENU</h6>
         {userList.map((item) => (
           <MenuItem
+            key={item.title}
             title={item.title}
             svg={item.svg}
             link={item.link}
@@ -60,6 +61,7 @@ const UserMenus: React.FC = () => {
         <h6 className="text-xs text-gray-500">CATEGORIES</h6>
         {menusList.map((item) => (
           <MenuItem
+            key={item.title}
             title={item.title}
             svg={item.svg}
             link={item.link}
@@ -70,6 +72,7 @@ const UserMenus: React.FC = () => {
         <h6 className="text-xs text-gray-500">LIBRARY</h6>
         {libraryList.map((item) => (
           <MenuItem
+            key={item.title}
             title={item.title}
             svg={item.svg}
             link={item.link}

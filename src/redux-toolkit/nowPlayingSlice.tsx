@@ -1,13 +1,13 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface nowPlayingState {
-  moviesList: any;
+  moviesList: movieType[];
   loading: boolean;
   error: string | null;
 }
 
 const initialState: nowPlayingState = {
-  moviesList: null,
+  moviesList: [],
   loading: false,
   error: null,
 };

@@ -1,5 +1,6 @@
 import { FC } from "react";
 import StarLogo from "../../logo/star-icon.svg";
+import PlayLogo from "../../logo/play.svg";
 
 const MovieCard: FC<{
   url: string;
@@ -22,8 +23,11 @@ const MovieCard: FC<{
           <img src={StarLogo} alt="star-logo" />
         </div>
       </div>
-      <button className="box-border w-full px-4 py-2 text-base font-bold rounded-lg bottom-2 bg-primary ">
-        Watch now
+      <button className="box-border w-full gap-5 px-4 py-2 text-base font-bold rounded-lg bottom-2 bg-primary">
+        <div className="flex gap-3 ml-14">
+          <span>Watch now</span>
+          <img src={PlayLogo} alt="playLogo" className="w-6" />
+        </div>
       </button>
     </div>
   );
