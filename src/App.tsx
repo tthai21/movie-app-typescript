@@ -2,10 +2,7 @@ import { Fragment } from "react";
 import MoviesPage from "./pages/MoviesPage";
 import { Route, Routes } from "react-router-dom";
 import Main from "./components/layout/Main";
-import TvShowPage from "./pages/TvShowPage";
-import NowPlayingPage from "./pages/NowPlayingPage";
-import TopTrendingPage from "./pages/TopTrendingPage";
-import UpComingPage from "./pages/UpComingPage";
+import MoviesRenderPage from "./pages/MoviesRenderPage";
 
 function App() {
   return (
@@ -15,17 +12,28 @@ function App() {
           <Route path="/" element={<MoviesPage></MoviesPage>}></Route>
           <Route
             path="/now-playing"
-            element={<NowPlayingPage></NowPlayingPage>}
+            element={
+              <MoviesRenderPage moviesType="now-playing"></MoviesRenderPage>
+            }
           ></Route>
           <Route
             path="/top-trending"
-            element={<TopTrendingPage></TopTrendingPage>}
+            element={
+              <MoviesRenderPage moviesType="top-trending"></MoviesRenderPage>
+            }
           ></Route>
           <Route
             path="/up-coming"
-            element={<UpComingPage></UpComingPage>}
+            element={
+              <MoviesRenderPage moviesType="up-coming"></MoviesRenderPage>
+            }
           ></Route>
-          <Route path="/tv-show" element={<TvShowPage></TvShowPage>}></Route>
+          <Route
+            path="/tv-episode"
+            element={
+              <MoviesRenderPage moviesType="tv-episode"></MoviesRenderPage>
+            }
+          ></Route>
         </Route>
       </Routes>
     </Fragment>

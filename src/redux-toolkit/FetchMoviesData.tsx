@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
-import { api_key, movie_db_url } from "../config";
+import { api_key, movie_db_url, tvdb_url } from "../config";
 import { topTrendingUpdateState } from "./topTrendingSlice";
 import { nowPlayingUpdateState } from "./nowPlayingSlice";
 import { upComingUpdateState } from "./upComingSlice";
@@ -31,6 +31,13 @@ const FetchMoviesData = (): void => {
         );
         const upComingList: any[] = upComing.data.results;
         dispatch(upComingUpdateState(upComingList));
+        // Fetch Tv episode
+        const tvEpisode: AxiosResponse = await axios.get(
+          `${tvdb_url}/popular?api_key=${api_key}&page=1`
+        );
+        const tvEpisodeList: any[] = tvEpisode.data.results;
+        dispatch(upComingUpdateState(tvEpisodeList));
+        console.log(tvEpisodeList);
       } catch (error: any) {
         console.log(error);
       }

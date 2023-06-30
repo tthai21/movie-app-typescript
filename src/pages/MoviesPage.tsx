@@ -24,7 +24,7 @@ const MoviesPage: React.FC = () => {
   return (
     <Fragment>
       <div className="banner page-container h-[300px] mb-20 overflow-hidden ">
-        <MovieBanner />
+        <MovieBanner bannerMovie={nowPlayingListHome} />
       </div>
       <MovieList
         moviesList={nowPlayingListHome}

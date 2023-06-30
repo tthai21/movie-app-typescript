@@ -20,10 +20,10 @@ const MovieList: React.FC<{
         {moviesList?.map((item) => (
           <MovieCard
             url={item.poster_path || item.backdrop_path}
-            title={item.original_title}
+            title={item.original_title || item.name}
             key={item.id}
             rate={item.vote_average}
-            year={item.release_date}
+            year={item.release_date || item.first_air_date}
           />
         ))}
       </div>
