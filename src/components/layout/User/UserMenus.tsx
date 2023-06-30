@@ -1,20 +1,21 @@
 import React from "react";
-import MenuItem from "./MenuItem";
-import MoviesSvg from "../../logo/movie.svg";
-import Notification from "../../logo/Notification.svg";
-import Community from "../../logo/community.svg";
-import User from "../../logo/user.svg";
-import Tv from "../../logo/tv.svg";
-import NowPlaying from "../../logo/nowPlaying.svg";
-import TopTrending from "../../logo/topTrending.svg";
-import UpComing from "../../logo/upComing.svg";
-import Recent from "../../logo/recent.svg";
-import Favorite from "../../logo/favorite.svg";
+import MenuItem from "../MenuItem";
+import MoviesSvg from "../../../logo/movie.svg";
+import Notification from "../../../logo/Notification.svg";
+import Community from "../../../logo/community.svg";
+import User from "../../../logo/user.svg";
+import Tv from "../../../logo/tv.svg";
+import NowPlaying from "../../../logo/nowPlaying.svg";
+import TopTrending from "../../../logo/topTrending.svg";
+import UpComing from "../../../logo/upComing.svg";
+import Recent from "../../../logo/recent.svg";
+import Favorite from "../../../logo/favorite.svg";
+import UserLogo from "../User/UserLogo";
 const UserMenus: React.FC = () => {
   const userList: Array<{ title: string; svg: string; link: string }> = [
-    { title: "Login" || "Sign out", svg: User, link: "/" },
-    { title: "Community", svg: Community, link: "/tv-episode" },
-    { title: "Notification", svg: Notification, link: "/top-trending" },
+    { title: "Login" || "Sign out", svg: User, link: "/login" },
+    { title: "Community", svg: Community, link: "/community" },
+    { title: "Notification", svg: Notification, link: "/notificaton" },
   ];
   const menusList: Array<{ title: string; svg: string; link: string }> = [
     { title: "Movies", svg: MoviesSvg, link: "/" },
@@ -24,21 +25,21 @@ const UserMenus: React.FC = () => {
     { title: "Up Coming", svg: UpComing, link: "/up-coming" },
   ];
   const libraryList: Array<{ title: string; svg: string; link: string }> = [
-    { title: "Recent", svg: Recent, link: "/" },
-    { title: "Favorite", svg: Favorite, link: "/tv-episode" },
+    { title: "Favorite", svg: Favorite, link: "/favorite" },
+    { title: "Recent", svg: Recent, link: "/recent" },
   ];
 
   return (
     <div className="text-white body-left w-[240px] bg-user h-screen sticky top-0">
-      <div className="flex gap-4 mt-10 mb-20 text-xl font-bold">
-        <span>FakeFlick</span>
+      <div className="flex gap-4 mt-10 mb-20 text-xl font-bold text-center">
+        <span className="ml-7">FakeFlix</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
-          stroke="currentColor"
-          className="w-6 h-6"
+          stroke="pink"
+          className="w-6 h-6 fill-current text-primary"
         >
           <path
             strokeLinecap="round"
@@ -79,6 +80,7 @@ const UserMenus: React.FC = () => {
           ></MenuItem>
         ))}
       </div>
+      <UserLogo></UserLogo>
     </div>
   );
 };

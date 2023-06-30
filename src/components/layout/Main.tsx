@@ -1,16 +1,16 @@
 import React, { Fragment } from "react";
-import Header from "./Header";
-import UserMenus from "./UserMenus";
-import SearchMenus from "./SearchMenus";
+// import Header from "./Header";
+import UserMenus from "./User/UserMenus";
 import { Outlet } from "react-router-dom";
+import SearchMenus from "./SearchBar/SearchMenus";
 
-const Main = () => {
+const Main: React.FC = () => {
   return (
     <Fragment>
       <header className="flex">
         <UserMenus></UserMenus>
         <div className="w-[70%]">
-          <Header></Header>
+          {/* <Header></Header> */}
           <Outlet></Outlet>
         </div>
         <SearchMenus></SearchMenus>

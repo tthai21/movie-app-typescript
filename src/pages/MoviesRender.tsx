@@ -9,7 +9,7 @@ const MoviesRender: React.FC<{
 }> = ({ moviesList, header, path }) => {
   return (
     <Fragment>
-      <div className="banner page-container h-[300px] mb-20 overflow-hidden ">
+      <div className="banner page-container h-[300px] mb-20 mt-20 overflow-hidden ">
         <MovieBanner bannerMovie={moviesList} />
       </div>
       <MovieList

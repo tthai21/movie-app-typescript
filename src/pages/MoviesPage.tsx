@@ -23,7 +23,7 @@ const MoviesPage: React.FC = () => {
   FetchMoviesData();
   return (
     <Fragment>
-      <div className="banner page-container h-[300px] mb-20 overflow-hidden ">
+      <div className="banner page-container h-[300px] mb-20 mt-20 ">
         <MovieBanner bannerMovie={nowPlayingListHome} />
       </div>
       <MovieList
