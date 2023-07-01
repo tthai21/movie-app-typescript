@@ -10,34 +10,38 @@ import { tvEpisodeUpdateState } from "./tvEpisodeSlice";
 const FetchMoviesData = (): void => {
   const dispatch = useDispatch();
   useEffect(() => {
-    const fetchNowPlaying = async () => {
+    const fetchNowPlaying = async (): Promise<void> => {
+      let nowPlaying: AxiosResponse;
+      let topTrending: AxiosResponse;
+      let upComing: AxiosResponse;
+      let tvEpisode: AxiosResponse;
       try {
-        // Fetch now playing
-        const nowPlaying: AxiosResponse = await axios.get(
+        // Fetch now playing and save to redux store
+        nowPlaying = await axios.get(
           `${movie_db_url}popular?api_key=${api_key}&page=1`
         );
-        const nowPlayingList: movieType[] = nowPlaying.data.results;
+        const nowPlayingList: movieType[] = await nowPlaying.data.results;
         dispatch(nowPlayingUpdateState(nowPlayingList));
 
-        // Fetch top trending
-        const topTrending: AxiosResponse = await axios.get(
+        // Fetch top trending and save to redux store
+        topTrending = await axios.get(
           `${movie_db_url}/top_rated?api_key=${api_key}&page=1`
         );
-        const topTrendingList: movieType[] = topTrending.data.results;
+        const topTrendingList: movieType[] = await topTrending.data.results;
         dispatch(topTrendingUpdateState(topTrendingList));
 
-        // Fetch up coming
-        const upComing: AxiosResponse = await axios.get(
+        // Fetch up coming and save to redux store
+        upComing = await axios.get(
           `${movie_db_url}/upcoming?api_key=${api_key}&page=1`
         );
-        const upComingList: movieType[] = upComing.data.results;
+        const upComingList: movieType[] = await upComing.data.results;
         dispatch(upComingUpdateState(upComingList));
 
-        // Fetch Tv episode
-        const tvEpisode: AxiosResponse = await axios.get(
+        // Fetch Tv episode and save to redux store
+        tvEpisode = await axios.get(
           `${tvdb_url}/popular?api_key=${api_key}&page=1`
         );
-        const tvEpisodeList: any[] = tvEpisode.data.results;
+        const tvEpisodeList: any[] = await tvEpisode.data.results;
         dispatch(tvEpisodeUpdateState(tvEpisodeList));
       } catch (error: any) {
         console.log(error);

@@ -4,7 +4,7 @@ const MovieBannerList: React.FC<{ item: any[] }> = (props) => {
   const item: any = props?.item;
   return (
     <div className="relative w-full h-full bg-white rounded-lg">
-      <div className="absolute rounded-lg overlay bg-gradient-to-t from-black to-gray-200 opacity-20"></div>
+      <div className="absolute rounded-lg overlay bg-gradient-to-t from-black to-black-200 opacity-20"></div>
       <img
         className="object-cover w-full h-full rounded-lg "
         src={`https://image.tmdb.org/t/p/original/${item?.backdrop_path}`}
