@@ -3,6 +3,7 @@ import MoviesPage from "./pages/MoviesPage";
 import { Route, Routes } from "react-router-dom";
 import Main from "./components/layout/Main";
 import MoviesRenderPage from "./pages/MoviesRenderPage";
+import MovieDetailsPage from "./pages/MovieDetailPage";
 
 function App() {
   return (
@@ -33,6 +34,14 @@ function App() {
             element={
               <MoviesRenderPage moviesType="tv-episode"></MoviesRenderPage>
             }
+          ></Route>
+          <Route
+            path="/movie/:id"
+            element={<MovieDetailsPage movie="movie"></MovieDetailsPage>}
+          ></Route>
+          <Route
+            path="/tv/:id"
+            element={<MovieDetailsPage movie="tv"></MovieDetailsPage>}
           ></Route>
         </Route>
       </Routes>

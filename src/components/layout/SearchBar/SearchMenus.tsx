@@ -15,7 +15,7 @@ const SearchMenus: React.FC = () => {
       <h2 className="mb-5 text-lg font-bold">Popular Movie</h2>
       {nowPlayingListHome.map((item) => (
         <PopularMovies
-          url={item.poster_path || item.backdrop_path}
+          url={item.backdrop_path || item.poster_path}
           title={item.original_title || item.name}
           key={item.id}
           rate={item.vote_average}

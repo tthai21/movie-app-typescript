@@ -9,16 +9,16 @@ const MoviesPage: React.FC = () => {
   const nowPlayingList: any[] = useSelector(
     (state: RootState) => state.nowPlaying.moviesList
   );
-  const nowPlayingListHome = nowPlayingList?.slice(-4);
+  const nowPlayingListHome = nowPlayingList?.slice(0, 4);
 
   const topTrendingList: any[] = useSelector(
     (state: RootState) => state.topTrending.moviesList
   );
-  const topTrendingListHome = topTrendingList?.slice(-4);
+  const topTrendingListHome = topTrendingList?.slice(0, 4);
   const upComingList: any[] = useSelector(
     (state: RootState) => state.upComing.moviesList
   );
-  const upComingListHome = upComingList?.slice(-4);
+  const upComingListHome = upComingList?.slice(0, 4);
 
   FetchMoviesData();
   return (

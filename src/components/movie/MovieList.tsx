@@ -19,6 +19,8 @@ const MovieList: React.FC<{
       <div className="grid grid-cols-4 gap-10 mt-5 mb-3 text-white movie-list page-container">
         {moviesList?.map((item) => (
           <MovieCard
+            id={item.id}
+            isMovie={item.isMovie}
             url={item.poster_path || item.backdrop_path}
             title={item.original_title || item.name}
             key={item.id}

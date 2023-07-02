@@ -1,13 +1,26 @@
 import { FC } from "react";
 import StarLogo from "../../logo/star-icon.svg";
 import PlayLogo from "../../logo/play.svg";
+import { useNavigate } from "react-router-dom";
 
 const MovieCard: FC<{
+  id: number;
   url: string;
   title: string;
   year: string;
   rate: number;
+  isMovie: boolean;
 }> = (props) => {
+  const navigate = useNavigate();
+  console.log(props.isMovie);
+
+  const navigateHandler = () => {
+    if (props.isMovie) {
+      navigate(`/movie/${props.id}`);
+    } else {
+      navigate(`/tv/${props.id}`);
+    }
+  };
   return (
     <div className="object-cover w-full p-2 rounded-lg movie-card bg-slate-700 ">
       <img
@@ -23,7 +36,10 @@ const MovieCard: FC<{
           <img src={StarLogo} alt="star-logo" />
         </div>
       </div>
-      <button className="box-border w-full gap-5 px-4 py-2 text-base font-bold rounded-lg bottom-2 bg-primary">
+      <button
+        onClick={navigateHandler}
+        className="box-border w-full gap-5 px-4 py-2 text-base font-bold rounded-lg bottom-2 bg-primary"
+      >
         <div className="flex gap-3 ml-14">
           <span>Watch now</span>
           <img src={PlayLogo} alt="playLogo" className="w-6" />
