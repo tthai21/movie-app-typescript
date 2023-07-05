@@ -12,7 +12,6 @@ const MovieCard: FC<{
   isMovie: boolean;
 }> = (props) => {
   const navigate = useNavigate();
-  console.log(props.isMovie);
 
   const navigateHandler = () => {
     if (props.isMovie) {

@@ -1,8 +1,7 @@
 import React from "react";
 import StarLogo from "../../../logo/star-icon.svg";
-// import PlayLogo from "../../../logo/play.svg";
 
-const PopularMovies: React.FC<{
+const SearchMoviesCard: React.FC<{
   url: string;
   title: string;
   year: string;
@@ -33,4 +32,4 @@ const PopularMovies: React.FC<{
   );
 };
 
-export default PopularMovies;
+export default SearchMoviesCard;
