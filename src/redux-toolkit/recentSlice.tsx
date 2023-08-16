@@ -18,7 +18,7 @@ export const recentSlice = createSlice({
   reducers: {
     recentUpdateState: (state, action: PayloadAction<any>) => {
       state.loading = false;
-      state.moviesList = action.payload.concat(state.moviesList).slice(0, 3);
+      state.moviesList = action.payload.slice(0, 3);
       localStorage.setItem("recent", JSON.stringify(state.moviesList));
     },
   },

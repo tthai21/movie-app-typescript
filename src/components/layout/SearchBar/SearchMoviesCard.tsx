@@ -1,11 +1,13 @@
 import React from "react";
 import StarLogo from "../../../logo/star-icon.svg";
+import Genres from "./Genres";
 
 const SearchMoviesCard: React.FC<{
   url: string;
   title: string;
   year: string;
   rate: number;
+  genres: { id: number; name: string }[];
 }> = (props) => {
   return (
     <div className="grid w-full grid-cols-3 p-2 mb-5 rounded-lg bg-slate-700">
@@ -17,15 +19,20 @@ const SearchMoviesCard: React.FC<{
         />
       </div>
       <div className="relative col-span-2">
-        <h3 className="mt-3 text-xl font-bold">{props.title}</h3>
+        <h3 className="text-xl font-bold ">{props.title}</h3>
         <div className="grid w-full grid-cols-2 year-star">
           <span className="opacity-50">
             {new Date(props.year).getFullYear()}
           </span>
           <div className=" flex w-[7%] ">
-            <span className="mr-1 opacity-50 ">{props.rate}</span>
+            <span className="mr-1 opacity-50 ">{props.rate.toFixed(1)}</span>
             <img src={StarLogo} alt="star-logo" className="float-right" />
           </div>
+        </div>
+        <div className="absolute flex gap-3 bottom-1 ">
+          {props.genres?.splice(0, 3).map((genres) => (
+            <Genres key={genres.id} genres={genres.name}></Genres>
+          ))}
         </div>
       </div>
     </div>

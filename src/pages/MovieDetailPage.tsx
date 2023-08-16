@@ -26,7 +26,6 @@ const MovieDetailsPage: React.FC<{ movie: string }> = ({ movie }) => {
           const exitedItem: any = recent?.find(
             (item) => item.id === res.data.id
           );
-          console.log(exitedItem);
           if (!exitedItem) {
             recent.unshift(res.data);
             dispatch(recentUpdateState(recent));

@@ -4,6 +4,8 @@ import { Route, Routes } from "react-router-dom";
 import Main from "./components/layout/Main";
 import MoviesRenderPage from "./pages/MoviesRenderPage";
 import MovieDetailsPage from "./pages/MovieDetailPage";
+import SignUpPage from "./pages/SignUpPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -43,6 +45,8 @@ function App() {
             path="/tv/:id"
             element={<MovieDetailsPage movie="tv"></MovieDetailsPage>}
           ></Route>
+          <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
+          <Route path="/login" element={<LoginPage></LoginPage>}></Route>
         </Route>
       </Routes>
     </Fragment>
