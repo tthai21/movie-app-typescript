@@ -4,6 +4,7 @@ import { topTrendingSlice } from "./topTrendingSlice";
 import { upComingSlice } from "./upComingSlice";
 import { tvEpisodeSlice } from "./tvEpisodeSlice";
 import { recentSlice } from "./recentSlice";
+import { userSlice } from "./userSlice";
 // Define a slice for the API data
 
 export const store = configureStore({
@@ -13,6 +14,7 @@ export const store = configureStore({
     upComing: upComingSlice.reducer,
     tvEpisode: tvEpisodeSlice.reducer,
     recent: recentSlice.reducer,
+    user: userSlice.reducer,
   },
 });
 

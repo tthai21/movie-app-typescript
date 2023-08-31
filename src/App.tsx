@@ -6,6 +6,7 @@ import MoviesRenderPage from "./pages/MoviesRenderPage";
 import MovieDetailsPage from "./pages/MovieDetailPage";
 import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
+import LogoutPage from "./pages/Logout";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           ></Route>
           <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
           <Route path="/login" element={<LoginPage></LoginPage>}></Route>
+          <Route path="/logout" element={<LogoutPage></LogoutPage>}></Route>
         </Route>
       </Routes>
     </Fragment>

@@ -11,9 +11,14 @@ import UpComing from "../../../logo/upComing.svg";
 import Recent from "../../../logo/recent.svg";
 import Favorite from "../../../logo/favorite.svg";
 import UserLogo from "../User/UserLogo";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux-toolkit/store";
 const UserMenus: React.FC = () => {
+  const user: any = useSelector((state: RootState) => state.user.user);
   const userList: Array<{ title: string; svg: string; link: string }> = [
-    { title: "Login" || "Sign out", svg: User, link: "/login" },
+    user
+      ? { title: "Logout", svg: User, link: "/logout" }
+      : { title: "Login", svg: User, link: "/login" },
     { title: "Community", svg: Community, link: "/community" },
     { title: "Notification", svg: Notification, link: "/notificaton" },
   ];

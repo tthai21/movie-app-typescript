@@ -1,25 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
+import axios from "../utils/axios";
+import jwtDecode from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { userUpdateState } from "../redux-toolkit/userSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux-toolkit/store";
 
 const schemaValidation = yup.object({
   email: yup
     .string()
-    .email("Please enter a valid email")
+    // .email("Please enter a valid email")
     .required("Please enter your email"),
   password: yup
     .string()
-    .matches(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-    )
-    .min(8, "Password must be 8 characters or more")
+    // .matches(
+    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+    //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    // )
+    // .min(8, "Password must be 8 characters or more")
     .required("Please enter your password"),
 });
 
 const LoginPage: React.FC = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,13 +36,29 @@ const LoginPage: React.FC = () => {
     mode: "onChange",
   });
 
+  interface DecodedToken {
+    email: string; // Example claim from JWT payload
+    userName: string; // Example claim from JWT payload
+    exp: number; // Example claim from JWT payload
+  }
+
   const submitHandler = async (values: { email: String; password: String }) => {
+    const LOGIN_URL = "/api/Auth/login";
+
     if (isValid) {
-      const response = await axios.get(
-        // api endpoint
-        "http://"
-      );
-      return response.data;
+      try {
+        const response = await axios.post(LOGIN_URL, values);
+        console.log(response.data);
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        const decodedToken: DecodedToken = jwtDecode(token);
+        const { email } = decodedToken;
+        dispatch(userUpdateState(email));
+        navigate("/");
+        return response.data;
+      } catch (error: any) {
+        console.log(error.response.data.errorMessage);
+      }
     }
   };
   return (
@@ -56,7 +79,7 @@ const LoginPage: React.FC = () => {
           id="email"
           placeholder="Enter your email"
           className="px-2 py-1 rounded-lg outline-none"
-          type="email"
+          type="text"
           // {...emailController.field}
           {...register("email")}
         />
