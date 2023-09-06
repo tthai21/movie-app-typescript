@@ -1,4 +1,4 @@
 import axios from "axios";
 export default axios.create({
-  baseURL: "http://localhost:5044",
+  baseURL: "https://moviesappapi.azurewebsites.net/",
 });
