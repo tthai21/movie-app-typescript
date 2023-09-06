@@ -20,9 +20,9 @@ const MovieDetailsPage: React.FC<{ movie: string }> = ({ movie }) => {
         res = await axios.get(`${tmdb_url}${movie}/${id}?api_key=${api_key}`);
         setCurrentMovie(res.data);
         if (recentJSON) {
-          console.log("Storage");
+          // console.log("Storage");
           const recent: any[] = JSON.parse(recentJSON);
-          console.log(recent);
+          // console.log(recent);
           const exitedItem: any = recent?.find(
             (item) => item.id === res.data.id
           );

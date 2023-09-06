@@ -1,21 +1,36 @@
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
-import { api_key, movie_db_url, tvdb_url } from "../config";
+import { api_key, movie_db_url, tmdb_url, tvdb_url } from "../config";
 import { topTrendingUpdateState } from "./topTrendingSlice";
 import { nowPlayingUpdateState } from "./nowPlayingSlice";
 import { upComingUpdateState } from "./upComingSlice";
 import { tvEpisodeUpdateState } from "./tvEpisodeSlice";
+import { genresUpdateState } from "./genresList";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 const FetchMoviesData = (): void => {
   const dispatch = useDispatch();
+  const favoriteList = useSelector(
+    (state: RootState) => state.favoriteList.favoriteList
+  );
+  const favoriteListId = favoriteList.map((item) => item.id);
   useEffect(() => {
     const fetchNowPlaying = async (): Promise<void> => {
       let nowPlaying: AxiosResponse;
       let topTrending: AxiosResponse;
       let upComing: AxiosResponse;
       let tvEpisode: AxiosResponse;
+      let genres: AxiosResponse;
       try {
+        // Fetch genres list and save to redux store
+        genres = await axios.get(
+          `${tmdb_url}genre/movie/list?api_key=${api_key}`
+        );
+        const genresList = genres.data;
+        dispatch(genresUpdateState(genresList.genres));
+
         // Fetch now playing and save to redux store
         nowPlaying = await axios.get(
           `${movie_db_url}popular?api_key=${api_key}&page=1`
@@ -26,7 +41,16 @@ const FetchMoviesData = (): void => {
           isMovie: true,
           isFavorite: false,
         }));
-        dispatch(nowPlayingUpdateState(newNowPlayList));
+        if (favoriteListId.length > 0) {
+          const checkedPlayList = newNowPlayList.map((item) => ({
+            ...item,
+            isFavorite: favoriteListId.includes(item.id),
+          }));
+
+          dispatch(nowPlayingUpdateState(checkedPlayList));
+        } else {
+          dispatch(nowPlayingUpdateState(newNowPlayList));
+        }
 
         // Fetch top trending and save to redux store
         topTrending = await axios.get(

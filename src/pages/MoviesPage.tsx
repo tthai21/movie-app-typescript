@@ -10,7 +10,6 @@ const MoviesPage: React.FC = () => {
     (state: RootState) => state.nowPlaying.moviesList
   );
   const nowPlayingListHome = nowPlayingList?.slice(0, 4);
-
   const topTrendingList: any[] = useSelector(
     (state: RootState) => state.topTrending.moviesList
   );

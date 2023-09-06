@@ -4,7 +4,6 @@ import MoviesSvg from "../../../logo/movie.svg";
 import Notification from "../../../logo/Notification.svg";
 import Community from "../../../logo/community.svg";
 import User from "../../../logo/user.svg";
-import Tv from "../../../logo/tv.svg";
 import NowPlaying from "../../../logo/nowPlaying.svg";
 import TopTrending from "../../../logo/topTrending.svg";
 import UpComing from "../../../logo/upComing.svg";
@@ -24,7 +23,6 @@ const UserMenus: React.FC = () => {
   ];
   const menusList: Array<{ title: string; svg: string; link: string }> = [
     { title: "Movies", svg: MoviesSvg, link: "/" },
-    { title: "Tv Episode", svg: Tv, link: "/tv-episode" },
     { title: "Now playing", svg: NowPlaying, link: "/now-playing" },
     { title: "Top Trending", svg: TopTrending, link: "/top-trending" },
     { title: "Up Coming", svg: UpComing, link: "/up-coming" },

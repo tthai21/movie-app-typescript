@@ -21,11 +21,13 @@ const MovieList: React.FC<{
           <MovieCard
             id={item.id}
             isMovie={item.isMovie}
-            url={item.poster_path || item.backdrop_path}
+            url={item.backdrop_path || item.poster_path}
             title={item.original_title || item.name}
             key={item.id}
             rate={item.vote_average}
             year={item.release_date || item.first_air_date}
+            genreId={item.genre_ids}
+            isFavorite={item.isFavorite}
           />
         ))}
       </div>

@@ -25,13 +25,13 @@ const SearchMoviesCard: React.FC<{
             {new Date(props.year).getFullYear()}
           </span>
           <div className=" flex w-[7%] ">
-            <span className="mr-1 opacity-50 ">{props.rate.toFixed(1)}</span>
+            <span className="mr-1 opacity-50 ">{props.rate}</span>
             <img src={StarLogo} alt="star-logo" className="float-right" />
           </div>
         </div>
         <div className="absolute flex gap-3 bottom-1 ">
-          {props.genres?.splice(0, 3).map((genres) => (
-            <Genres key={genres.id} genres={genres.name}></Genres>
+          {props.genres?.slice(0, 3).map((genres,index) => (
+            <Genres key={index} genres={genres.name}></Genres>
           ))}
         </div>
       </div>

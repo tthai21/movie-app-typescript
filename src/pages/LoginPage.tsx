@@ -8,6 +8,10 @@ import { useDispatch } from "react-redux";
 import { userUpdateState } from "../redux-toolkit/userSlice";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux-toolkit/store";
+import {
+  favoriteListFetch,
+  favoriteListUpdateState,
+} from "../redux-toolkit/favoriteList";
 
 const schemaValidation = yup.object({
   email: yup
@@ -48,16 +52,20 @@ const LoginPage: React.FC = () => {
     if (isValid) {
       try {
         const response = await axios.post(LOGIN_URL, values);
-        console.log(response.data);
         const { token } = response.data;
         localStorage.setItem("token", token);
         const decodedToken: DecodedToken = jwtDecode(token);
         const { email } = decodedToken;
         dispatch(userUpdateState(email));
+        const responseFavorite = await axios.get(
+          `api/Favorite/fetchFavorites?email=${email}`
+        );
+
+        dispatch(favoriteListFetch(responseFavorite.data));
         navigate("/");
         return response.data;
       } catch (error: any) {
-        console.log(error.response.data.errorMessage);
+        console.log(error);
       }
     }
   };

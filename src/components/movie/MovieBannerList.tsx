@@ -11,7 +11,7 @@ const MovieBannerList: React.FC<{ item: any[] }> = (props) => {
         alt=""
       />
       <div className="absolute w-full text-white left-10 bottom-5">
-        <h2 className="mb-5 text-3xl font-bold">{item?.title}</h2>
+        <h2 className="mb-5 text-3xl font-bold">{item?.title || item?.name}</h2>
         <div className="flex items-center mb-5 gap-x-3">
           <span className="px-4 py-2 text-sm font-bold border border-white rounded-lg ">
             Adventure

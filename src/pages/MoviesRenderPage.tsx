@@ -5,6 +5,8 @@ import MoviesRender from "./MoviesRender";
 
 const MoviesRenderPage: React.FC<{ moviesType: string }> = (props) => {
   const moviesType = props.moviesType;
+  
+  
   const nowPlayingList: any[] = useSelector(
     (state: RootState) => state.nowPlaying.moviesList
   );
@@ -17,6 +19,7 @@ const MoviesRenderPage: React.FC<{ moviesType: string }> = (props) => {
   const tvEpisode: any[] = useSelector(
     (state: RootState) => state.tvEpisode.moviesList
   );
+    
   FetchMoviesData();
   switch (moviesType) {
     case "now-playing":

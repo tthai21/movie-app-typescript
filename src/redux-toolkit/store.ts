@@ -5,6 +5,8 @@ import { upComingSlice } from "./upComingSlice";
 import { tvEpisodeSlice } from "./tvEpisodeSlice";
 import { recentSlice } from "./recentSlice";
 import { userSlice } from "./userSlice";
+import { favoriteListSlice } from "./favoriteList";
+import { genresListSlice } from "./genresList";
 // Define a slice for the API data
 
 export const store = configureStore({
@@ -15,6 +17,8 @@ export const store = configureStore({
     tvEpisode: tvEpisodeSlice.reducer,
     recent: recentSlice.reducer,
     user: userSlice.reducer,
+    favoriteList: favoriteListSlice.reducer,
+    genres: genresListSlice.reducer,
   },
 });
 

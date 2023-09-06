@@ -13,7 +13,7 @@ const schemaValidation = yup.object({
     .max(10, "User name must be less than 10 characters"),
   email: yup
     .string()
-    .email("Please enter a valid email")
+    // .email("Please enter a valid email")
     .required("Please enter your email"),
   gender: yup
     .string()
@@ -25,7 +25,7 @@ const schemaValidation = yup.object({
     //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
     //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
     // )
-    .min(8, "Password must be 8 characters or more")
+    // .min(8, "Password must be 8 characters or more")
     .required("Please enter your password"),
   term: yup
     .boolean()
@@ -47,7 +47,7 @@ const SignupPage: React.FC = () => {
     username: String;
     email: String;
     password: String;
-  }) => {
+  }) => {    
     const REGISTER_URL = "api/Auth/register";
     try {
       const response = await axios.post(
@@ -58,10 +58,9 @@ const SignupPage: React.FC = () => {
           password: values.password,
         })
       );
-      console.log(response.data);
-      return response.data;
+      return response?.data;
     } catch (error: any) {
-      console.error(error.response.data.errorMessage);
+      console.error(error?.response?.data);
     }
   };
   return (
