@@ -6,12 +6,8 @@ import axios from "../utils/axios";
 import jwtDecode from "jwt-decode";
 import { useDispatch } from "react-redux";
 import { userUpdateState } from "../redux-toolkit/userSlice";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux-toolkit/store";
-import {
-  favoriteListFetch,
-  favoriteListUpdateState,
-} from "../redux-toolkit/favoriteList";
+
+import { favoriteListFetch } from "../redux-toolkit/favoriteList";
 
 const schemaValidation = yup.object({
   email: yup
@@ -20,11 +16,11 @@ const schemaValidation = yup.object({
     .required("Please enter your email"),
   password: yup
     .string()
-    // .matches(
-    //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
-    //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-    // )
-    // .min(8, "Password must be 8 characters or more")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/,
+      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+    )
+    .min(8, "Password must be 8 characters or more")
     .required("Please enter your password"),
 });
 
