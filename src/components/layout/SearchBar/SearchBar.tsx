@@ -19,7 +19,6 @@ const SearchBar: React.FC = () => {
     );
     const searchList: any[] = res.data.results;
     dispatch(searchUpdateState(searchList));
-    console.log(searchList);
     navigate("/search/:id");
   };
 

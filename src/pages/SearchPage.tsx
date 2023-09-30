@@ -9,7 +9,6 @@ const SearchPage: React.FC = () => {
   const searchList: any[] = useSelector(
     (state: RootState) => state.search.searchList
   );
-  console.log("🚀 ~ file: SearchPage.tsx:12 ~ searchList:", searchList);
 
   FetchMoviesData();
   return (
