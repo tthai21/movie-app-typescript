@@ -43,7 +43,7 @@ const LoginPage: React.FC = () => {
   }
 
   const submitHandler = async (values: { email: String; password: String }) => {
-    const LOGIN_URL = "/api/Auth/login";
+    const LOGIN_URL = "api/Auth/login";
 
     if (isValid) {
       try {

@@ -3,7 +3,7 @@ import Search from "../../../logo/Search.svg";
 
 const SearchBar: React.FC = () => {
   return (
-    <div className="m-10 w-[80%] flex relative mb-20">
+    <div className="w-[80%] flex relative ">
       <input
         type="text"
         placeholder="Quick search"

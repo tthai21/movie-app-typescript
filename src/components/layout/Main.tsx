@@ -9,8 +9,7 @@ const Main: React.FC = () => {
     <Fragment>
       <header className="flex">
         <UserMenus></UserMenus>
-        <div className="w-[70%]">
-          {/* <Header></Header> */}
+        <div className="sm:w-[70%] mx-auto">
           <Outlet></Outlet>
         </div>
         <SearchMenus></SearchMenus>

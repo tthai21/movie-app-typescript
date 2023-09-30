@@ -27,8 +27,10 @@ const SearchMenus: React.FC = () => {
   console.log(recentList);
 
   return (
-    <div className="sticky text-white top-0 body-right w-[420px] bg-user h-screen ">
-      <SearchBar></SearchBar>
+    <div className="sticky text-white top-0 body-right w-[420px] bg-user h-screen lg:block hidden ">
+      <div className="m-10 mb-20 w-full">
+        <SearchBar></SearchBar>
+      </div>
       <h2 className="mb-5 text-lg font-bold">Favorite Movie</h2>
       {favoriteList?.map((item) => (
         <SearchMoviesCard
