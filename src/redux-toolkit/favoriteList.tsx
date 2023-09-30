@@ -17,8 +17,8 @@ export const favoriteListSlice = createSlice({
   initialState,
   reducers: {
     favoriteListFetch: (state, action: PayloadAction<any>) => {
-    state.loading=false;
-    state.favoriteList = action.payload;
+      state.loading = false;
+      state.favoriteList = action.payload;
     },
     favoriteListUpdateState: (state, action: PayloadAction<any>) => {
       state.loading = false;
@@ -26,7 +26,7 @@ export const favoriteListSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (exited === -1) {
-        state.favoriteList.unshift(action.payload);
+        state.favoriteList.push(action.payload);
       } else {
         state.favoriteList.splice(exited, 1);
       }
@@ -34,4 +34,5 @@ export const favoriteListSlice = createSlice({
   },
 });
 
-export const { favoriteListUpdateState,favoriteListFetch } = favoriteListSlice.actions;
+export const { favoriteListUpdateState, favoriteListFetch } =
+  favoriteListSlice.actions;

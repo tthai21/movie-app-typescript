@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux-toolkit/store";
 import { favoriteListUpdateState } from "../../redux-toolkit/favoriteList";
 import axios from "../../utils/axios";
+import { current } from "@reduxjs/toolkit";
 
 const MovieCard: FC<{
   id: number;
@@ -39,79 +40,83 @@ const MovieCard: FC<{
   };
 
   const addFavorite = async () => {
-    setIsFavorite((favorites) => !favorites);
-    let currentMoviesGenres = [];
-    for (let i = 0; i < props.genreId?.length; i++) {
-      const currentID = props.genreId[i];
-      const matchingGenres = genresList.find((item) => item.id === currentID);
-      if (matchingGenres) {
-        currentMoviesGenres.push(matchingGenres);
+    if (userEmail) {
+      setIsFavorite((favorites) => !favorites);
+      let currentMoviesGenres = [];
+      for (let i = 0; i < props.genreId?.length; i++) {
+        const currentID = props.genreId[i];
+        const matchingGenres = genresList.find((item) => item.id === currentID);
+        if (matchingGenres) {
+          currentMoviesGenres.push(matchingGenres);
+        }
       }
-    }
 
-    const currentMovie: {
-      id: number;
-      url: string;
-      title: string;
-      rate: number;
-      year: number;
-      genres: any[] | null;
-      email: string | null;
-    } = {
-      email: userEmail,
-      id: props.id,
-      url: props.url,
-      title: props.title,
-      rate: Math.round(props.rate),
-      year: new Date(props.year).getFullYear(),
-      genres: currentMoviesGenres || null,
-    };
+      const currentMovie: {
+        id: number;
+        url: string;
+        title: string;
+        rate: number;
+        year: number;
+        genres: any[] | null;
+        email: string | null;
+      } = {
+        email: userEmail,
+        id: props.id,
+        url: props.url,
+        title: props.title,
+        rate: Math.round(props.rate),
+        year: new Date(props.year).getFullYear(),
+        genres: currentMoviesGenres || null,
+      };
 
-    const currentMovieRedux: {
-      id: number;
-      url: string;
-      title: string;
-      rate: number;
-      year: number;
-      genres: any[] | null;
-      email: string | null;
-      isFavorite: boolean;
-    } = {
-      email: userEmail,
-      id: props.id,
-      url: props.url,
-      title: props.title,
-      rate: props.rate,
-      year: new Date(props.year).getFullYear(),
-      genres: currentMoviesGenres || null,
-      isFavorite: isFavorite,
-    };
+      const currentMovieRedux: {
+        id: number;
+        url: string;
+        title: string;
+        rate: number;
+        year: number;
+        genres: any[] | null;
+        email: string | null;
+        isFavorite: boolean;
+      } = {
+        email: userEmail,
+        id: props.id,
+        url: props.url,
+        title: props.title,
+        rate: props.rate,
+        year: new Date(props.year).getFullYear(),
+        genres: currentMoviesGenres || null,
+        isFavorite: isFavorite,
+      };
 
-    dispatch(favoriteListUpdateState(currentMovieRedux));
-    try {
-      if (currentMovieRedux.isFavorite === false) {
-        await axios.post(
-          "/api/Favorite/addFavorite",
-          JSON.stringify(currentMovie),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
-      } else {
-        await axios.post(
-          "/api/Favorite/removeFavorite",
-          JSON.stringify(currentMovie),
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        );
+      dispatch(favoriteListUpdateState(currentMovieRedux));
+      try {
+        if (currentMovieRedux.isFavorite === false) {
+          await axios.post(
+            "/api/Favorite/addFavorite",
+            JSON.stringify(currentMovie),
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+        } else {
+          await axios.post(
+            "/api/Favorite/removeFavorite",
+            JSON.stringify(currentMovie),
+            {
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
+    } else {
+      alert("Please login to add movie to favorite list");
     }
   };
 

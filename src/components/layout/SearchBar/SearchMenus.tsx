@@ -8,7 +8,10 @@ const SearchMenus: React.FC = () => {
   const [recentList, setRecentList] = useState<any[]>([]);
   let favoriteList = useSelector(
     (state: RootState) => state.favoriteList.favoriteList
-  ).slice(0, 3);
+  );
+  const favoriteListReversed = favoriteList
+    .map((element, index, array) => array[array.length - 1 - index])
+    .slice(0, 3);
 
   const recent: any[] = useSelector(
     (state: RootState) => state.recent.moviesList
@@ -32,7 +35,7 @@ const SearchMenus: React.FC = () => {
         <SearchBar></SearchBar>
       </div>
       <h2 className="mb-5 text-lg font-bold">Favorite Movie</h2>
-      {favoriteList?.map((item) => (
+      {favoriteListReversed?.map((item) => (
         <SearchMoviesCard
           url={item.url}
           title={item.title}

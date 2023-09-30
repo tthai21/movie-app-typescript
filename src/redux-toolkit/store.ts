@@ -7,6 +7,7 @@ import { recentSlice } from "./recentSlice";
 import { userSlice } from "./userSlice";
 import { favoriteListSlice } from "./favoriteList";
 import { genresListSlice } from "./genresList";
+import { searchSlice } from "./searchMovieSlice";
 // Define a slice for the API data
 
 export const store = configureStore({
@@ -19,6 +20,7 @@ export const store = configureStore({
     user: userSlice.reducer,
     favoriteList: favoriteListSlice.reducer,
     genres: genresListSlice.reducer,
+    search: searchSlice.reducer,
   },
 });
 
