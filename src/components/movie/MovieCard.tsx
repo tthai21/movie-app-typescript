@@ -39,8 +39,7 @@ const MovieCard: FC<{
   };
 
   const addFavorite = async () => {
-    // if (userEmail) {
-    setIsFavorite(!props.isFavorite);
+    setIsFavorite((favorites) => !favorites);
     let currentMoviesGenres = [];
     for (let i = 0; i < props.genreId?.length; i++) {
       const currentID = props.genreId[i];
@@ -114,10 +113,6 @@ const MovieCard: FC<{
     } catch (error) {
       console.log(error);
     }
-
-    // }else{
-    //   alert("Please login to add to favorites");
-    // }
   };
 
   return (
@@ -155,9 +150,11 @@ const MovieCard: FC<{
         onClick={navigateHandler}
         className="box-border w-full gap-5 px-4 py-2 text-base font-bold rounded-lg bottom-2 bg-primary"
       >
-        <div className="flex gap-3 ml-14">
-          <span>Watch now</span>
-          <img src={PlayLogo} alt="playLogo" className="w-6" />
+        <div className=" flex ">
+          <div className="flex gap-3 mx-auto">
+            <span>Watch now</span>
+            <img src={PlayLogo} alt="playLogo" className="w-6" />
+          </div>
         </div>
       </button>
     </div>

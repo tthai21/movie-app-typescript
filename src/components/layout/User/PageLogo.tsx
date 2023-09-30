@@ -3,7 +3,7 @@ import React from "react";
 const PageLogo: React.FC = () => {
   return (
     <>
-      <div className="md:hidden justify-center gap-4 mt-10 md:mb-20 text-2xl md:text-xl font-bold text-center text-white flex">
+      <div className=" justify-center gap-4 mt-10 md:mb-20 text-2xl md:text-xl font-bold text-center text-white flex">
         <span className="ml-7">FakeFlix</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

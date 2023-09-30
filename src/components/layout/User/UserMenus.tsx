@@ -14,7 +14,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../redux-toolkit/store";
 import SearchBar from "../SearchBar/SearchBar";
 import PageLogo from "./PageLogo";
-import { NavLink } from "react-router-dom";
 const UserMenus: React.FC = () => {
   const user: any = useSelector((state: RootState) => state.user.user);
   const userList: Array<{ title: string; svg: string; link: string }> = [
@@ -42,7 +41,9 @@ const UserMenus: React.FC = () => {
       
       {/* Desktop */}
       <div className="text-white body-left w-[240px] bg-user h-screen sticky top-0 hidden md:block">
+        <div className="">
         <PageLogo></PageLogo>
+        </div>
         <div className="lg:hidden m-5 mb-10 w-full ">
           <SearchBar></SearchBar>
         </div>

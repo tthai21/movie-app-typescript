@@ -12,7 +12,9 @@ const MobileMenus: React.FC = () => {
   return (
     <>
       {/* Mobile */}
-      <PageLogo></PageLogo>
+      <div className="md:hidden">
+        <PageLogo></PageLogo>
+      </div>
       <div className="flex justify-end border-b border-gray-400 mb-5 py-5 md:hidden">
         <nav>
           <section className="MOBILE-MENU flex sm:hidden">
@@ -60,13 +62,13 @@ const MobileMenus: React.FC = () => {
                 </li>
                 <li className="border-b border-gray-400 my-8 uppercase">
                   <NavLink
-                    to="/popular"
+                    to="/now-playing"
                     className={({ isActive }) => {
                       return isActive ? "text-primary" : "";
                     }}
                     onClick={() => setIsNavOpen(false)}
                   >
-                    Popular
+                    Now playing
                   </NavLink>
                 </li>
                 <li className="border-b border-gray-400 my-8 uppercase">
@@ -83,7 +85,7 @@ const MobileMenus: React.FC = () => {
                 <li className="border-b border-gray-400 my-8 uppercase">
                   <NavLink
                     onClick={() => setIsNavOpen(false)}
-                    to="/tv-episodes"
+                    to="/tv-episode"
                     className={({ isActive }) => {
                       return isActive ? "text-primary" : "";
                     }}

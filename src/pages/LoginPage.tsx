@@ -84,7 +84,6 @@ const LoginPage: React.FC = () => {
           placeholder="Enter your email"
           className="px-2 py-1 rounded-lg outline-none"
           type="text"
-          // {...emailController.field}
           {...register("email")}
         />
         {errors?.email && (
@@ -99,7 +98,6 @@ const LoginPage: React.FC = () => {
         </label>
         <input
           type="password"
-          // {...passwordController.field}
           {...register("password")}
           className="px-2 py-1 rounded-lg outline-none"
         />
