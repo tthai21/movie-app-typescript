@@ -23,11 +23,11 @@ const MovieList: React.FC<{
             <MovieCard
               id={item.id}
               isMovie={item.isMovie}
-              url={item.backdrop_path || item.poster_path}
-              title={item.original_title || item.name}
+              url={item.backdrop_path || item.poster_path || item.url}
+              title={item.original_title || item.name || item.title}
               key={item.id}
-              rate={item.vote_average}
-              year={item.release_date || item.first_air_date}
+              rate={item.vote_average || item.rate}
+              year={item.release_date || item.first_air_date || item.year}
               genreId={item.genre_ids}
               isFavorite={item.isFavorite}
             />

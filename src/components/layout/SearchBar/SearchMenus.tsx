@@ -27,7 +27,6 @@ const SearchMenus: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recentListLocalJSON]);
-  console.log(recentList);
 
   return (
     <div className="sticky text-white top-0 body-right w-[420px] bg-user h-screen lg:block hidden ">

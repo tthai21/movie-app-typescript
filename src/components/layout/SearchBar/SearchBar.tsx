@@ -34,7 +34,7 @@ const SearchBar: React.FC = () => {
       <img
         src={Search}
         alt="search"
-        className="absolute w-6 left-[85%] bottom-[20%] cursor-pointer"
+        className="absolute w-6 left-[85%] bottom-[20%] cursor-pointer "
         onClick={handleSearch}
       />
     </div>

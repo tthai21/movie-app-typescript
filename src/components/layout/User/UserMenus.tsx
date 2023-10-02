@@ -20,8 +20,7 @@ const UserMenus: React.FC = () => {
     user
       ? { title: "Logout", svg: User, link: "/logout" }
       : { title: "Login", svg: User, link: "/login" },
-    { title: "Community", svg: Community, link: "/community" },
-    { title: "Notification", svg: Notification, link: "/notificaton" },
+    { title: "UserInfo", svg: Community, link: "/user-info" },
   ];
   const menusList: Array<{ title: string; svg: string; link: string }> = [
     { title: "Movies", svg: MoviesSvg, link: "/" },
@@ -34,15 +33,12 @@ const UserMenus: React.FC = () => {
     { title: "Recent", svg: Recent, link: "/recent" },
   ];
 
-
-
   return (
     <>
-      
       {/* Desktop */}
       <div className="text-white body-left w-[240px] bg-user h-screen sticky top-0 hidden md:block">
         <div className="">
-        <PageLogo></PageLogo>
+          <PageLogo></PageLogo>
         </div>
         <div className="lg:hidden m-5 mb-10 w-full ">
           <SearchBar></SearchBar>

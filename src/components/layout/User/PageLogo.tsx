@@ -1,9 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const PageLogo: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <div className=" justify-center gap-4 mt-10 md:mb-20 text-2xl md:text-xl font-bold text-center text-white flex">
+      <div
+        className=" justify-center gap-4 mt-10 md:mb-20 text-2xl md:text-xl font-bold text-center text-white flex cursor-pointer"
+        onClick={() => navigate("/")}
+      >
         <span className="ml-7">FakeFlix</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"

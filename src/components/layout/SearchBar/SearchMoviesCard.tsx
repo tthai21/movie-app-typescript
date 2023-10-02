@@ -18,7 +18,7 @@ const SearchMoviesCard: React.FC<{
           className="object-cover w-full h-full rounded-lg"
         />
       </div>
-      <div className="relative col-span-2">
+      <div className="relative col-span-2 mx-2">
         <h3 className="text-xl font-bold ">{props.title}</h3>
         <div className="grid w-full grid-cols-2 year-star">
           <span className="opacity-50">
@@ -30,7 +30,7 @@ const SearchMoviesCard: React.FC<{
           </div>
         </div>
         <div className="absolute flex gap-3 bottom-1 ">
-          {props.genres?.slice(0, 3).map((genres,index) => (
+          {props.genres?.slice(0, 2).map((genres, index) => (
             <Genres key={index} genres={genres.name}></Genres>
           ))}
         </div>

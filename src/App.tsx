@@ -8,6 +8,8 @@ import SignUpPage from "./pages/SignUpPage";
 import LoginPage from "./pages/LoginPage";
 import LogoutPage from "./pages/Logout";
 import SearchPage from "./pages/SearchPage";
+import FavoritePage from "./pages/FavoritePage";
+import RecentPage from "./pages/Recent";
 
 function App() {
   return (
@@ -51,6 +53,14 @@ function App() {
           <Route path="/sign-up" element={<SignUpPage></SignUpPage>}></Route>
           <Route path="/login" element={<LoginPage></LoginPage>}></Route>
           <Route path="/logout" element={<LogoutPage></LogoutPage>}></Route>
+          <Route
+            path="/favorite"
+            element={<FavoritePage></FavoritePage>}
+          ></Route>
+          <Route
+            path="/recent"
+            element={<RecentPage></RecentPage>}
+          ></Route>
         </Route>
       </Routes>
     </Fragment>
