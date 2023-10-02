@@ -9,10 +9,13 @@ const FavoritePage: React.FC = () => {
   const favoriteList: any[] = useSelector(
     (state: RootState) => state.favoriteList.favoriteList
   );
-  const favoriteListReversed = favoriteList
-    .map((element, index, array) => array[array.length - 1 - index])
-    .slice(0, 3);
-
+  const favoriteListReversed = favoriteList.map(
+    (element, index, array) => array[array.length - 1 - index]
+  );
+  const newFavoriteListReversed = favoriteListReversed.map((item) => ({
+    ...item,
+    isFavorite: true,
+  }));
   FetchMoviesData();
   return (
     <Fragment>
@@ -20,7 +23,7 @@ const FavoritePage: React.FC = () => {
         <MovieBanner bannerMovie={favoriteListReversed} />
       </div>
       <MovieList
-        moviesList={favoriteListReversed}
+        moviesList={newFavoriteListReversed}
         header="Now playing"
         path="now-playing"
       ></MovieList>
